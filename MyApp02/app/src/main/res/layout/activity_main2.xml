@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+    <TextView
+        android:id="@+id/txtScissors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/material_dynamic_primary90"
+        android:rotation="-43"
+        android:text="剪刀"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtRock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtRock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/material_dynamic_tertiary95"
+        android:rotation="10"
+        android:text="石頭"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtPaper"
+        app:layout_constraintStart_toEndOf="@+id/txtScissors"
+        app:layout_constraintTop_toTopOf="@+id/txtScissors" />
+
+    <TextView
+        android:id="@+id/txtSimpleGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:rotation="8"
+        android:text="！簡單小遊戲-II！"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="@+id/txtPaper"
+        app:layout_constraintStart_toStartOf="@+id/txtScissors"
+        app:layout_constraintTop_toBottomOf="@+id/txtRock" />
+
+    <TextView
+        android:id="@+id/txtPaper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-8dp"
+        android:background="@color/material_dynamic_neutral_variant80"
+        android:backgroundTintMode="src_in"
+        android:rotation="36"
+        android:text="布！"
+        android:textColor="#00796B"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRock"
+        app:layout_constraintTop_toTopOf="@+id/txtScissors" />
+
+    <RadioGroup
+        android:id="@+id/rdgGuess"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSimpleGame">
+
+        <RadioButton
+            android:id="@+id/rbtnScissors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_scissors"
+            android:textSize="40sp" />
+
+        <RadioButton
+            android:id="@+id/rbtnRock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_rock"
+            android:textSize="40sp" />
+
+        <RadioButton
+            android:id="@+id/rbtnPaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_paper"
+            android:textSize="40sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnGuess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="我出-"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgGuess"
+        tools:text="我出-石頭" />
+
+    <TextView
+        android:id="@+id/txtShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:rotation="-15"
+        android:text="結果："
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="@+id/txtScissors"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuess" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnGuess"
+        app:layout_constraintStart_toStartOf="@+id/btnGuess"
+        app:layout_constraintTop_toBottomOf="@+id/txtShow"
+        tools:text="你贏了！" />
+</androidx.constraintlayout.widget.ConstraintLayout>
