@@ -3,6 +3,7 @@ package tw.edu.ntub.myapp02
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val btnGuess = findViewById<Button>(R.id.btnGuess)
+
         val txtScissors: TextView = findViewById(R.id.txtScissors)
         val txtRock = findViewById<TextView>(R.id.txtRock)
         val txtPaper: TextView = findViewById<TextView>(R.id.txtPaper)
@@ -28,11 +29,9 @@ class MainActivity : AppCompatActivity() {
         val rbtnScissors = findViewById<RadioButton>(R.id.rbtnScissors)
         val rbtnRock = findViewById<RadioButton>(R.id.rbtnRock)
         val rbtnPaper = findViewById<RadioButton>(R.id.rbtnPaper)
-        
+        val rdbguss = findViewById<RadioGroup>(R.id.rdgGuess)
+        val btnGuess = findViewById<Button>(R.id.btnGuess)
         btnGuess.setOnClickListener {
-            txtScissors.setBackgroundResource(0)
-            txtRock.setBackgroundResource(0)
-            txtPaper.setBackgroundResource(0)
             val random = (1..3).random()
             when (random) {
                 1 -> {
