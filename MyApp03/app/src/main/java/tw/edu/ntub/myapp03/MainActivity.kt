@@ -1,10 +1,12 @@
 package tw.edu.ntub.myapp03
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -79,5 +81,17 @@ class MainActivity : AppCompatActivity() {
         btnGo7.setOnClickListener {
             launcher.launch(Intent(this, Main2Activity::class.java))
         }
+        val imageView = findViewById<ImageView>(R.id.imageView)
+        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                Log.d("MainActivity", "onCreate: 圖片路徑: $uri")
+                imageView.setImageURI(uri) // 顯示選取的圖片
+            }
+        }
+        val btnImage = findViewById<Button>(R.id.btnImage)
+        btnImage.setOnClickListener {
+            getContent.launch("image/*") // 啟動圖片選擇器
+        }
+
     }
 }
