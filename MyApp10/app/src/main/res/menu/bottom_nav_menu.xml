@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+    <item
+        android:id="@+id/todoListFragment"
+        android:icon="@drawable/list"
+        android:title="@string/todo_list" />
+    <item
+        android:id="@+id/completedTodosFragment"
+        android:icon="@drawable/writing"
+        android:title="@string/completed" />
 </menu>

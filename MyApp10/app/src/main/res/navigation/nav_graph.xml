@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/nav_graph">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/todoListFragment">
+    <fragment
+        android:id="@+id/todoDetailFragment"
+        android:name="tw.edu.ntub.myapp10.TodoDetailFragment"
+        android:label="Todo Detail" >
+        <argument
+            android:name="todoId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoListFragment"
+        android:name="tw.edu.ntub.myapp10.TodoListFragment"
+        android:label="Todo List" >
+        <action
+            android:id="@+id/action_todoListFragment_to_addTodoFragment"
+            app:destination="@id/addTodoFragment" />
+        <action
+            android:id="@+id/action_todoListFragment_to_todoDetailFragment"
+            app:destination="@id/todoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="tw.edu.ntub.myapp10.AddTodoFragment"
+        android:label="Add Todo"
+        tools:layout="@layout/fragment_add_todo" />
 </navigation>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My App10</string>
+    <string name="todo_list">Todo List</string>
+    <string name="completed">Completed</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="todo_title">Title</string>
+    <string name="todo_description">Description</string>
+    <string name="save">Save</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
