@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "tw.edu.ntub.myapp04"
+    namespace = "tw.edu.ntub.myapp05"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "tw.edu.ntub.myapp04"
+        applicationId = "tw.edu.ntub.myapp05"
         minSdk = 34
         targetSdk = 35
         versionCode = 1
@@ -32,10 +32,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
-    }
-
-    buildFeatures {
-        viewBinding = true
     }
 }
 

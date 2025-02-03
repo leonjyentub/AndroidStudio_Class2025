@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="16dp">
+
+    <!-- 附餐部分 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="選擇附餐"
+        android:textSize="20sp" />
+
+    <CheckBox
+        android:id="@+id/cbCheeseSticks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="起司棒" />
+
+    <CheckBox
+        android:id="@+id/cbFries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="薯條" />
+
+    <!-- 飲料尺寸選擇 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="選擇飲料尺寸"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:id="@+id/rgBeverageSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <RadioButton
+          android:id="@+id/rbXL"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="特大" />
+
+      <RadioButton
+          android:id="@+id/rbL"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="大" />
+
+      <RadioButton
+          android:id="@+id/rbM"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="中" />
+
+      <RadioButton
+          android:id="@+id/rbS"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="小" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnConfirmSide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="確認" />
+
+  </LinearLayout>
+</ScrollView>

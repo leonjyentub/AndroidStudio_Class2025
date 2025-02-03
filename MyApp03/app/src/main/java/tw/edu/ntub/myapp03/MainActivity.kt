@@ -93,5 +93,6 @@ class MainActivity : AppCompatActivity() {
             getContent.launch("image/*") // 啟動圖片選擇器
         }
 
+        imageView.setImageResource(R.drawable.image01)
     }
 }
