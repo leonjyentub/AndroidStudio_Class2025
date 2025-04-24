@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnLeft"
+        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:title="左邊？" />
+    <item
+        android:id="@+id/btnMiddle"
+        android:icon="@android:drawable/sym_action_email"
+        android:title="中間的" />
+    <item
+        android:id="@+id/btnRight"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="右右右" />
+</menu>
