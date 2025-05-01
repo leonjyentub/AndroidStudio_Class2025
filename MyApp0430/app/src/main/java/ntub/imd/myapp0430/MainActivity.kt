@@ -11,6 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             }.start()
         }
 
+        val btnStart2 = findViewById<Button>(R.id.btnStart2)
         val handler = Handler(Looper.getMainLooper()){ msg->
             Log.d("racing", "onClickUsingHandler: msg: ${msg.what}")
             if(progressBunny >= MAX && progressTurtle < MAX){
@@ -78,19 +82,18 @@ class MainActivity : AppCompatActivity() {
             }else if(progressTurtle >= MAX && progressBunny < MAX){
                 txtResult.text = "烏龜贏了！"
             }
-            btnStart.isEnabled = true
+            btnStart2.isEnabled = true
             return@Handler true
         }
-
-        val btnStart2 = findViewById<Button>(R.id.btnStart2)
         btnStart2.setOnClickListener{
+            btnStart2.isEnabled = false
             Thread{
                 while(progressBunny < MAX && progressTurtle < MAX){
                     Thread.sleep(100)
                     progressTurtle += 1
                     sbarTurtle.progress = progressTurtle
                 }
-                handler.sendEmptyMessage(0)
+                handler.sendEmptyMessage(93)
                 Log.d("racing", "onClickUsingThread-handler-turtle: end")
             }.start()
 
@@ -103,9 +106,34 @@ class MainActivity : AppCompatActivity() {
                     progressBunny += 3
                     sbarBunny.progress = progressBunny
                 }
-                handler.sendEmptyMessage(0)
+                handler.sendEmptyMessage(106)
                 Log.d("racing", "onClickUsingThread-handler-bunny: end")
             }.start()
+        }
+        val btnStart3 = findViewById<Button>(R.id.btnStart3)
+        btnStart3.setOnClickListener {
+            btnStart3.isEnabled = false
+            lifecycleScope.launch {
+                val sleepProb = arrayOf(true, true, false)
+                while(progressBunny < MAX && progressTurtle < MAX){
+                    delay(100)
+                    if(sleepProb.random())
+                        delay(300) //假設免子會多睡一點
+                    progressBunny += 3
+                    sbarBunny.progress = progressBunny
+                }
+                Log.d("racing", "onClickUsingCoroutines-bunny: end")
+                handler.sendEmptyMessage(128)
+            }
+            lifecycleScope.launch {
+                while(progressBunny < MAX && progressTurtle < MAX){
+                    delay(100)
+                    progressTurtle += 1
+                    sbarTurtle.progress = progressTurtle
+                }
+                Log.d("racing", "onClickUsingCoroutines-turtle: end")
+                handler.sendEmptyMessage(138)
+            }
         }
     }
 }
