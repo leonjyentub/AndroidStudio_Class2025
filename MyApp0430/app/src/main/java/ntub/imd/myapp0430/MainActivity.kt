@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val btnStart2 = findViewById<Button>(R.id.btnStart2)
+        val btnStart3 = findViewById<Button>(R.id.btnStart3)
         val handler = Handler(Looper.getMainLooper()){ msg->
             Log.d("racing", "onClickUsingHandler: msg: ${msg.what}")
             if(progressBunny >= MAX && progressTurtle < MAX){
@@ -83,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                 txtResult.text = "烏龜贏了！"
             }
             btnStart2.isEnabled = true
+            btnStart3.isEnabled = true
             return@Handler true
         }
         btnStart2.setOnClickListener{
@@ -110,7 +112,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("racing", "onClickUsingThread-handler-bunny: end")
             }.start()
         }
-        val btnStart3 = findViewById<Button>(R.id.btnStart3)
+
         btnStart3.setOnClickListener {
             btnStart3.isEnabled = false
             lifecycleScope.launch {
@@ -121,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                         delay(300) //假設免子會多睡一點
                     progressBunny += 3
                     sbarBunny.progress = progressBunny
+                    Log.d("racing", "onClickUsingCoroutines-bunny-process: $progressBunny")
                 }
                 Log.d("racing", "onClickUsingCoroutines-bunny: end")
                 handler.sendEmptyMessage(128)
@@ -130,6 +133,7 @@ class MainActivity : AppCompatActivity() {
                     delay(100)
                     progressTurtle += 1
                     sbarTurtle.progress = progressTurtle
+                    Log.d("racing", "onClickUsingCoroutines-turtle-process: $progressTurtle")
                 }
                 Log.d("racing", "onClickUsingCoroutines-turtle: end")
                 handler.sendEmptyMessage(138)
