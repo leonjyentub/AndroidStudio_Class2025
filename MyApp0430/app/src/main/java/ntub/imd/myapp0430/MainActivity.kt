@@ -102,9 +102,9 @@ class MainActivity : AppCompatActivity() {
                         Thread.sleep(300) //假設免子會多睡一點
                     progressBunny += 3
                     sbarBunny.progress = progressBunny
-                    handler.sendEmptyMessage(0)
-                    Log.d("racing", "onClickUsingThread-handler-bunny: end")
                 }
+                handler.sendEmptyMessage(0)
+                Log.d("racing", "onClickUsingThread-handler-bunny: end")
             }.start()
         }
     }
