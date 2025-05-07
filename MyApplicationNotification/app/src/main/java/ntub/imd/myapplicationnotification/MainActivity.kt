@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val CHANNEL_ID:String = "MyNotifyID"
         val channel_name:String = "我的頻道"
         var notificationId: Int = 1
+        lateinit var btnGo: Button
         private fun createNotificationChannel() {
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
@@ -32,25 +33,15 @@ class MainActivity : AppCompatActivity() {
                 notificationManager.createNotificationChannel(channel)
             }
         }
-    val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            // Permission is granted. Continue the action or workflow in your
-            // app.
-            with(NotificationManagerCompat.from(this)) {
-                if (ActivityCompat.checkSelfPermission(
-                        this@MainActivity, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
-                    //notify(notificationId, builder.build())
-                }
+
+        val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                btnGo.performClick()
+            } else {
+                // 會執行到這邊就是因為使用者按「不同意/不允許」，所以這裡就是要跳出去拜託使用者按「同意」的頁面 XDDD
             }
-        } else {
-            // Explain to the user that the feature is unavailable because the
-            // feature requires a permission that the user has denied. At the
-            // same time, respect the user's decision. Don't link to system
-            // settings in an effort to convince the user to change their
-            // decision.
         }
-    }
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             enableEdgeToEdge()
@@ -60,12 +51,12 @@ class MainActivity : AppCompatActivity() {
                 v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
                 insets
             }
-            val btnGo = findViewById<Button>(R.id.btnGo)
+            btnGo = findViewById<Button>(R.id.btnGo)
             createNotificationChannel()
             btnGo.setOnClickListener {
                 notificationId += 1
                 var builder = NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setSmallIcon(android.R.drawable.btn_radio)
+                    .setSmallIcon(android.R.drawable.btn_star)
                     .setContentTitle("簡單訊息")
                     .setContentText("不知道寫什麼所以在亂寫")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -73,17 +64,13 @@ class MainActivity : AppCompatActivity() {
                 with(NotificationManagerCompat.from(this)) {
                     // notificationId是一組你自己定的唯一整數就可以了，例如說：1
                     //數字一樣就被當成同一個訊息蓋過去，不一樣就會再列出一個新的
-                    when{
-                        ActivityCompat.checkSelfPermission(
-                            this@MainActivity, Manifest.permission.POST_NOTIFICATIONS)
-                                == PackageManager.PERMISSION_GRANTED ->{
-                                    notify(notificationId, builder.build())
-                                }
-                        else -> {
-                            // You can directly ask for the permission.
-                            // The registered ActivityResultCallback gets the result of this request.
-                            //requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                        }
+                    if(ActivityCompat.checkSelfPermission(
+                        this@MainActivity, Manifest.permission.POST_NOTIFICATIONS)
+                            == PackageManager.PERMISSION_GRANTED){
+                                notify(notificationId, builder.build())
+                            }
+                    else {
+                        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                     }
                 }
             }
