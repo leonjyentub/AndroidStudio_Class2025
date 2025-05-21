@@ -67,11 +67,50 @@
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:text="送出"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnSelect"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtScore" />
+
+    <Button
+        android:id="@+id/btnSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="用姓名選資料"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
+        app:layout_constraintStart_toEndOf="@+id/btnSave"
+        app:layout_constraintTop_toTopOf="@+id/btnSave"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="更新"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSelect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSelect"
+        app:layout_constraintTop_toTopOf="@+id/btnSelect" />
+
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="刪除"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btnUpdate"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
