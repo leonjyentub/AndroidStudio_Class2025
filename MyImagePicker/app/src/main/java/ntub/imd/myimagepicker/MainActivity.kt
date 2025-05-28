@@ -50,6 +50,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGranted ->
+            if(isGranted) {
+                Log.d("RequestPermission", "onCreate: 耶，有權限")
+                btnPick.performClick()
+            }else{
+                Log.d("RequestPermission", "onCreate: 沒有權限222222222~~~")
+            }
+        }
+
         btnPick.setOnClickListener {
             if(ContextCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.READ_MEDIA_IMAGES)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -57,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                 imageLauncher.launch(intent)
             }else{
                 Log.d("ImagePicker", "onCreate: 沒有權限~~~~~~~")
+                requestPermissionLauncher.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
             }
         }
     }
