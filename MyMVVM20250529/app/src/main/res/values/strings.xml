@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyMVVM20250529</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="bus_stop_header">所有的停靠時刻</string>
+    <string name="arrival_time_header">抵達本車站的時間</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="ntub.imd.mymvvm20250529.ui.dashboard.DashboardFragment"
+        android:label="fragment_full_schedule"
+        tools:layout="@layout/fragment_full_schedule" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="ntub.imd.mymvvm20250529.ui.home.HomeFragment"
+        android:label="{stopName}"
+        tools:layout="@layout/fragment_stop_schedule" >
+        <argument
+            android:name="stopName"
+            app:argType="string" />
+    </fragment>
+</navigation>
