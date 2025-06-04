@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/allListFragment">
+
+    <fragment
+        android:id="@+id/allListFragment"
+        android:name="ntub.imd.mystores.fragments.AllListFragment"
+        android:label="fragment_all_list"
+        tools:layout="@layout/fragment_all_list" >
+        <action
+            android:id="@+id/action_allListFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="ntub.imd.mystores.fragments.StoreFragment"
+        android:label="fragment_store"
+        tools:layout="@layout/fragment_store" />
+</navigation>
